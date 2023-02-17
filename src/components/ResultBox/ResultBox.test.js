@@ -53,4 +53,15 @@ for (const testObj of testCases) {
       expect(output).toHaveTextContent("PLN 123.00 = PLN 123.00");
     }
   );
+
+  it(
+    "should render 'Wrong value...' when amount is less then 0. Negative amount test" +
+      testObj.amount,
+    () => {
+      render(<ResultBox from="PLN" to="USD" amount={-1} />);
+      const output = screen.getByTestId("output");
+      expect(output).toHaveTextContent("Wrong value…");
+    }
+  );
+
 } // for end
